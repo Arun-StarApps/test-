@@ -16,7 +16,6 @@ module LogGenerator
                 AND locked_at IS NULL
                 AND attempts < 10
               ").count
-            puts "job count === #{job_count}"
             url = URI.parse("https://letscale-dev-49b31de4a60b.herokuapp.com/sys-logs")
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -28,7 +27,6 @@ module LogGenerator
                 job_count:  job_count,
             }
             request.body = jobs.to_json
-            puts jobs
             response = http.request(request)
         end
 
