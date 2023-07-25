@@ -26,6 +26,7 @@ module LogGenerator
             jobs = {
                 job_count:  job_count,
             }
+            puts "Job count ===== #{job_count}"
             request.body = jobs.to_json
             response = http.request(request)
         end
