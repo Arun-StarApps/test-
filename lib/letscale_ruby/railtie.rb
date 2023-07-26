@@ -1,6 +1,6 @@
 
 
-module LogGenerator
+module LetscaleRuby
     class Railtie < Rails::Railtie
         config.after_initialize do
             if defined?(Rails::Server) && Rails.const_defined?('Server') && ENV["IS_MIRROR"].present?
@@ -10,4 +10,3 @@ module LogGenerator
           end
     end
   end
-  .

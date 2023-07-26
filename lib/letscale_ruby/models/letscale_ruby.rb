@@ -1,8 +1,8 @@
 require 'clockwork'
 include Clockwork
 require 'net/http'
-module LogGenerator
-    class LogGenerator < ActiveRecord::Base
+module LetscaleRuby
+    class LetscaleRuby < ActiveRecord::Base
         self.table_name = 'delayed_jobs'
         
         def self.send_log 
@@ -10,7 +10,7 @@ module LogGenerator
             unless  token
               return
             end
-            job_count = LogGenerator.where("
+            job_count = LetscaleRuby.where("
                 run_at + interval '5 seconds' < NOW() AT TIME ZONE 'utc'
                 AND priority >= 6
                 AND locked_at IS NULL
