@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   ]
   
   spec.add_runtime_dependency 'rails', '>=6.1'
-  spec.add_runtime_dependency 'clockwork', '~> 3.0.2'
-  spec.add_runtime_dependency 'rake', '~>13.0.6'
+  spec.add_runtime_dependency 'clockwork', '>= 3'
+  spec.add_runtime_dependency 'rake', '>=13'
 
 end
