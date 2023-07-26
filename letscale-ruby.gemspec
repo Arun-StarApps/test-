@@ -4,7 +4,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "letscale-ruby"
-  spec.version = '0.2.1'
+  spec.version = '0.2.2'
   spec.authors = ["Arun"]
   spec.email = ["arun@starapps.studio"]
 
