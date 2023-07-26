@@ -21,11 +21,11 @@ Gem::Specification.new do |spec|
   # spec.metadata["changelog_uri"] = "https://github.com/starapps-studio/shopify-domains/blob/main/CHANGELOG.md"
 
   spec.files  = [
-    'lib/log_generator/railtie.rb',
-    'lib/log_generator.rb',
-    'lib/log_generator/models/log_generator.rb',
-    'lib/log_generator/config/clock.rb',
-    'lib/log_generator/lib/tasks/clockwork.rake',
+    'lib/letscale_ruby/railtie.rb',
+    'lib/letscale-ruby.rb',
+    'lib/letscale_ruby/models/letscale_ruby.rb',
+    'lib/letscale_ruby/config/clock.rb',
+    'lib/letscale_ruby/lib/tasks/clockwork.rake',
     
   ]
   
