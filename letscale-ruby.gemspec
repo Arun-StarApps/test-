@@ -4,7 +4,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "letscale-ruby"
-  spec.version = '0.2.0'
+  spec.version = '0.2.1'
   spec.authors = ["Arun"]
   spec.email = ["arun@starapps.studio"]
 
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
     
   ]
   
-  spec.add_runtime_dependency 'rails', '~>6.1'
+  spec.add_runtime_dependency 'rails', '>=6.1'
   spec.add_runtime_dependency 'clockwork', '~> 3.0.2'
   spec.add_runtime_dependency 'rake', '~>13.0.6'
 
