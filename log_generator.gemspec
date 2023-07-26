@@ -3,7 +3,7 @@
 
 
 Gem::Specification.new do |spec|
-  spec.name = "log_generator"
+  spec.name = "letscale_ruby"
   spec.version = '0.1.0'
   spec.authors = ["Arun"]
   spec.email = ["arun@starapps.studio"]
