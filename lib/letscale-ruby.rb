@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 module LetscaleRuby
 
-  class Initializer
-    def self.run
-      unless LetscaleRuby.find_by(queue: 'sendLetscaleLog')
-        LetscaleRuby.start_log
+  class Railtie < Rails::Railtie
+    config.after_initialize do
+      dyno = ENV["DYNO"]
+      if dyno&.start_with?("worker") &&  dyno.split(".")[1].to_i == 1 &&  ENV["IS_MIRROR"].present?
+        Clockwork.run
       end
     end
   end
-
-  class Railtie < Rails::Railtie
-    config.after_initialize do
-      Initializer.run
-    end
-  end
   require('letscale_ruby/models/letscale_ruby')
-
+  require('letscale_ruby/config/clock')
 end

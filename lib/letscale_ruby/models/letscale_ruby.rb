@@ -26,15 +26,6 @@ module LetscaleRuby
             request.body = jobs.to_json
             response = http.request(request)
         end
-        
-        
-        def self.start_log
-            send_log
-            
-            # Add a new delayed job to run the send_log method again after 20 seconds
-            delay(run_at: 20.seconds.from_now, priority: 0, queue: 'sendLetscaleLog' ).start_log
-          end
-        
        
     end
 end
