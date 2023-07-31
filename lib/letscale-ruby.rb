@@ -1,14 +1,34 @@
-# frozen_string_literal: true
 module LetscaleRuby
 
   class Railtie < Rails::Railtie
     config.after_initialize do
       dyno = ENV["DYNO"]
       if dyno&.start_with?("worker") &&  dyno.split(".")[1].to_i == 1 &&  ENV["IS_MIRROR"].present?
-        Clockwork.run
+
+        def send_log
+          while true
+           LetscaleRuby.send_log
+            sleep(20) 
+          end
+        end
+
+        def start_worker
+          begin
+            worker = Delayed::Worker.new
+            worker.start
+          rescue => e
+            puts "Error starting Delayed Job worker: #{e.message}"
+            puts e.backtrace.join("\n")
+          end
+        end
+
+        thread1 = Thread.new { start_worker() }
+        thread2 = Thread.new { send_log() }
+
+        thread1.join
+        thread2.join
       end
     end
   end
   require('letscale_ruby/models/letscale_ruby')
-  require('letscale_ruby/config/clock')
 end
