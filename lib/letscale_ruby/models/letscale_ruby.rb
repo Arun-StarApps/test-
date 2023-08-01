@@ -7,12 +7,13 @@ module LetscaleRuby
             unless  token
               return
             end
-                job_count = LetscaleRuby.where("
-                    run_at + interval '5 seconds' < NOW() 
-                    AND priority >= 6
-                    AND locked_at IS NULL
-                    AND attempts < 10
-                ").count
+            job_count = LetscaleRuby.where("
+                run_at + interval '5 seconds' < ?
+                AND priority >= 6
+                AND locked_at IS NULL
+                AND attempts < 10
+                ", Time.zone.now
+            ).count
             url = URI.parse("https://letscale-dev-49b31de4a60b.herokuapp.com/sys-logs")
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -26,7 +27,6 @@ module LetscaleRuby
             request.body = jobs.to_json
             response = http.request(request)
         end
-       
     end
 end
   
