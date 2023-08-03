@@ -3,7 +3,7 @@ module LetscaleRuby
         self.table_name = 'delayed_jobs'
         
         def self.send_log 
-            token = ENV['LOG_TOKEN']
+            token = ENV['LETSCALE_API_TOKEN']
             unless  token
               return
             end
@@ -29,4 +29,3 @@ module LetscaleRuby
         end
     end
 end
-  
