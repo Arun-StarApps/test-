@@ -27,5 +27,23 @@ module LetscaleRuby
             request.body = jobs.to_json
             response = http.request(request)
         end
+
+        def self.restart_dyno
+            token = ENV['LETSCALE_API_TOKEN']
+            unless  token
+              return
+            end
+            url = URI.parse("https://letscale-dev-49b31de4a60b.herokuapp.com/restart_dynos")
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            request = Net::HTTP::Post.new(url.path)
+            request['Content-Type'] = 'application/json'
+            request['Accept'] = 'application/vnd.heroku+json; version=3'
+            request['LOGPLEX_DRAIN_TOKEN'] = token
+            response = http.request(request)
+            if  response.code.to_i != 200 
+                restart_dyno
+            end
+        end
     end
 end
