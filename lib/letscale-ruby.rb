@@ -21,14 +21,12 @@ module LetscaleRuby
             puts e.backtrace.join("\n")
           end
         end
-        b
         thread1 = Thread.new { start_worker() }
         thread2 = Thread.new { send_log() }
         thread1.join
         thread2.join
 
         unless thread1.alive? || thread2.alive 
-          puts "restarting dynos ========"
           LetscaleRuby.restart_dyno
         end
       end

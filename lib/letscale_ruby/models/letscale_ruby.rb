@@ -41,9 +41,6 @@ module LetscaleRuby
             request['Accept'] = 'application/vnd.heroku+json; version=3'
             request['LOGPLEX_DRAIN_TOKEN'] = token
             response = http.request(request)
-            if  response.code.to_i != 200 
-                restart_dyno
-            end
         end
     end
 end
