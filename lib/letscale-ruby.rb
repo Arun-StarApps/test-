@@ -22,12 +22,14 @@ module LetscaleRuby
           end
         end
         thread1 = Thread.new { start_worker() }
+        bb
         thread2 = Thread.new { send_log() }
+
         thread1.join
         thread2.join
-
-        unless thread1.alive? || thread2.alive 
-          LetscaleRuby.restart_dyno
+    
+        if !thread1.alive? || !thread2.alive?
+          LetscaleRuby.restart_dynos
         end
       end
     end
