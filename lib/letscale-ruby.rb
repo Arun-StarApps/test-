@@ -7,7 +7,7 @@ module LetscaleRuby
 
         def send_log
           while true
-           LetscaleRuby.send_log
+            LetscaleRuby.send_log
             sleep(20) 
           end
         end
