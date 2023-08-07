@@ -22,7 +22,7 @@ module LetscaleRuby
           end
         end
         thread1 = Thread.new { start_worker() }
-        bb
+        
         thread2 = Thread.new { send_log() }
 
         thread1.join
