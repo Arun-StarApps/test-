@@ -19,9 +19,11 @@ Gem::Specification.new do |spec|
   spec.files  = [
     'lib/letscale-ruby.rb',
     'lib/letscale_ruby/models/letscale_ruby.rb',
+    'lib/letscale_ruby/config/clock.rb'
 
   ]
   
   spec.add_runtime_dependency 'rails', '>=6.1'
+  spec.add_runtime_dependency 'clockwork', ">=0.2.4"
 
 end
