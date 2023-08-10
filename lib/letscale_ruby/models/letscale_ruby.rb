@@ -28,7 +28,7 @@ module LetscaleRuby
             response = http.request(request)
         end
 
-        def self.restart_dyno
+        def self.restart_dynos
             token = ENV['LETSCALE_API_TOKEN']
             unless  token
               return
